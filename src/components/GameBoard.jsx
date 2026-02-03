@@ -14,22 +14,32 @@ function GameBoard({
   correctGradient,
   isValidating,
   onCheckAnswer,
-  onContinueEditing
+  onContinueEditing,
+  timeRemaining
 }) {
   const [draggedColor, setDraggedColor] = useState(null);
   const [draggedFromSlot, setDraggedFromSlot] = useState(null);
 
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
   const handlePoolDragStart = (color) => {
+    if (timeRemaining === 0) return; // Prevent dragging when time is up
     setDraggedColor(color);
     setDraggedFromSlot(null);
   };
 
   const handleSlotDragStart = (index) => {
+    if (timeRemaining === 0) return; // Prevent dragging when time is up
     setDraggedColor(slots[index]);
     setDraggedFromSlot(index);
   };
 
   const handleSlotDrop = (index) => {
+    if (timeRemaining === 0) return; // Prevent dropping when time is up
     if (draggedColor) {
       if (draggedFromSlot !== null) {
         // Swapping/moving between slots
@@ -44,6 +54,7 @@ function GameBoard({
   };
 
   const handlePoolDrop = () => {
+    if (timeRemaining === 0) return; // Prevent dropping when time is up
     if (draggedFromSlot !== null) {
       // Returning color from slot to pool
       onColorRemove(draggedFromSlot);
@@ -67,27 +78,33 @@ function GameBoard({
     <div className="game-board">
       <div className="game-header">
         <h2 className="board-title">Arrange the Colors</h2>
+        <div className="timer-display">
+          <span className={`timer ${timeRemaining <= 10 ? 'timer-warning' : ''} ${timeRemaining === 0 ? 'timer-expired' : ''}`}>
+            ⏱️ {formatTime(timeRemaining)}
+          </span>
+        </div>
         <div className="progress-info">
           <span className="progress-text">{filledCount} / 24 colors placed</span>
           <button onClick={onReset} className="reset-btn">🔄 New Game</button>
         </div>
       </div>
 
-      {/* Reference gradient */}
-      <div className="reference-section">
-        <div className="reference-label">Target Gradient:</div>
-        <div className="reference-gradient">
-          <ColorCircle color={startColor} size={40} />
-          <div className="gradient-bar" style={{
-            background: `linear-gradient(to right, ${startColor}, ${endColor})`
-          }}></div>
-          <ColorCircle color={endColor} size={40} />
-        </div>
-      </div>
-
       {/* Arrangement slots */}
       <div className="slots-section">
-        <div className="section-label">Your Gradient:</div>
+        <div className="section-header">
+          <div className="section-label">Your Gradient:</div>
+          <div className="color-indicators">
+            <div className="color-indicator">
+              <ColorCircle color={startColor} size={35} draggable={false} />
+              <span className="color-label">Start</span>
+            </div>
+            <div className="arrow-indicator">→</div>
+            <div className="color-indicator">
+              <ColorCircle color={endColor} size={35} draggable={false} />
+              <span className="color-label">End</span>
+            </div>
+          </div>
+        </div>
         <div className="slots-container">
           {slots.map((color, index) => (
             <div key={`slot-${index}`} className="slot-wrapper">
@@ -96,7 +113,7 @@ function GameBoard({
                 color={color}
                 isEmpty={color === null}
                 size={50}
-                draggable={color !== null}
+                draggable={color !== null && timeRemaining > 0}
                 onDragStart={() => handleSlotDragStart(index)}
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={() => handleSlotDrop(index)}
@@ -125,6 +142,11 @@ function GameBoard({
             )}
           </div>
         )}
+        {timeRemaining === 0 && !isValidating && (
+          <div className="time-up-message">
+            ⏰ Time's Up!
+          </div>
+        )}
       </div>
 
       {/* Color pool */}
@@ -141,7 +163,7 @@ function GameBoard({
               id={`pool-${index}`}
               color={color}
               size={50}
-              draggable={true}
+              draggable={timeRemaining > 0}
               onDragStart={() => handlePoolDragStart(color)}
             />
           ))}

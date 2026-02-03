@@ -111,6 +111,167 @@
   font-weight: 300;
 }
 
+.timer-setting {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.timer-setting label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.time-spinner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+  padding: 30px 40px;
+  border-radius: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  cursor: grab;
+  user-select: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.time-spinner:hover {
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px);
+}
+
+.time-spinner.dragging {
+  cursor: grabbing;
+  border-color: #00ff88;
+  box-shadow: 0 12px 40px rgba(0, 255, 136, 0.5);
+  transform: scale(1.02);
+}
+
+.spinner-arrow {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.spinner-arrow.left {
+  animation-delay: 0s;
+}
+
+.spinner-arrow.right {
+  animation-delay: 1s;
+}
+
+.time-spinner:hover .spinner-arrow {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.time-spinner.dragging .spinner-arrow {
+  color: #00ff88;
+}
+
+.time-display-large {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #00ff88;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  min-width: 120px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.time-spinner.dragging .time-display-large {
+  transform: scale(1.1);
+  text-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+}
+
+.spinner-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.time-spinner:hover .spinner-hint {
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.time-spinner.dragging .spinner-hint {
+  color: #00ff88;
+}
+
+.time-range-indicator {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.time-range-indicator span {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  min-width: 35px;
+  text-align: center;
+}
+
+.range-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.range-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #00ff88 100%);
+  border-radius: 10px;
+  transition: width 0.1s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.step-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.step-marker.active {
+  background: #00ff88;
+  height: 20px;
+  width: 6px;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+}
+
 .confirm-btn {
   padding: 16px 48px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

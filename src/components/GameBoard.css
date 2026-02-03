@@ -25,6 +25,54 @@
   gap: 20px;
 }
 
+.timer-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.timer {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00ff88;
+  font-family: 'Courier New', monospace;
+  transition: all 0.3s ease;
+}
+
+.timer-warning {
+  color: #ffa500;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.timer-expired {
+  color: #ff4757;
+}
+
+.timer-toggle-btn {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+}
+
+.timer-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #667eea;
+  transform: scale(1.05);
+}
+
 .board-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -111,6 +159,44 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.color-indicators {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 20px;
+  border-radius: 15px;
+}
+
+.color-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.arrow-indicator {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 5px;
 }
 
 .slots-container {
@@ -230,6 +316,19 @@
   transform: translateY(0);
 }
 
+.time-up-message {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 8px 25px rgba(255, 71, 87, 0.4);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -312,6 +411,16 @@
   .game-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .color-indicators {
+    width: 100%;
+    justify-content: center;
   }
 }
 

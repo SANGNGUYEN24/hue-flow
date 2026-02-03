@@ -90,6 +90,10 @@ function App() {
     setIsValidating(true)
   }
 
+  const handleContinueEditing = () => {
+    setIsValidating(false)
+  }
+
   return (
     <div className="app">
       {gamePhase === 'selection' ? (
@@ -115,6 +119,7 @@ function App() {
           correctGradient={correctGradient}
           isValidating={isValidating}
           onCheckAnswer={handleCheckAnswer}
+          onContinueEditing={handleContinueEditing}
         />
       )}
     </div>

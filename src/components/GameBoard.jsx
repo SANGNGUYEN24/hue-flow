@@ -13,7 +13,8 @@ function GameBoard({
   onReset,
   correctGradient,
   isValidating,
-  onCheckAnswer
+  onCheckAnswer,
+  onContinueEditing
 }) {
   const [draggedColor, setDraggedColor] = useState(null);
   const [draggedFromSlot, setDraggedFromSlot] = useState(null);
@@ -117,6 +118,11 @@ function GameBoard({
           <div className="validation-result">
             <strong>{correctCount} out of 24</strong> colors are in the correct position!
             {correctCount === 24 && <span className="perfect"> 🎉 Perfect!</span>}
+            {correctCount < 24 && (
+              <button onClick={onContinueEditing} className="continue-btn">
+                ✏️ Continue Editing
+              </button>
+            )}
           </div>
         )}
       </div>

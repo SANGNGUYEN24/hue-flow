@@ -34,6 +34,8 @@ body {
 #root {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -49,6 +51,8 @@ button {
   font-family: inherit;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 button:focus,
@@ -79,3 +83,13 @@ input[type="color"] {
   background: rgba(102, 126, 234, 0.7);
 }
 
+/* Prevent text selection on touch devices for better UX */
+.color-circle,
+.time-spinner,
+button {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}

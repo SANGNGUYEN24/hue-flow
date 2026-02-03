@@ -297,16 +297,111 @@
 }
 
 @media (max-width: 768px) {
+  .color-picker-container {
+    padding: 20px;
+  }
+
   .game-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+
+  .game-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
   }
   
   .color-selection {
-    gap: 20px;
+    gap: 30px;
+    flex-direction: column;
   }
   
   .arrow {
     font-size: 2rem;
     transform: rotate(90deg);
+  }
+
+  .color-preview {
+    width: 100px;
+    height: 100px;
+  }
+
+  .timer-setting {
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  .time-spinner {
+    padding: 20px 25px;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .spinner-arrow {
+    font-size: 1.5rem;
+  }
+
+  .time-display-large {
+    font-size: 2.2rem;
+    min-width: 90px;
+  }
+
+  .spinner-hint {
+    font-size: 0.65rem;
+    bottom: 5px;
+  }
+
+  .time-range-indicator {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .confirm-btn {
+    padding: 14px 36px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .game-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .color-preview {
+    width: 80px;
+    height: 80px;
+  }
+
+  .color-input {
+    width: 60px;
+    height: 35px;
+  }
+
+  .random-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  .time-spinner {
+    padding: 15px 20px;
+    gap: 10px;
+  }
+
+  .spinner-arrow {
+    font-size: 1.2rem;
+  }
+
+  .time-display-large {
+    font-size: 1.8rem;
+    min-width: 70px;
+  }
+
+  .spinner-hint {
+    font-size: 0.6rem;
   }
 }

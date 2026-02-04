@@ -50,3 +50,23 @@
   cursor: not-allowed;
   opacity: 0.6;
 }
+
+.color-circle.selected {
+  border-color: #00ff88;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.8), 0 0 40px rgba(0, 255, 136, 0.4);
+  transform: scale(1.1);
+  animation: pulse-glow 1s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.8), 0 0 40px rgba(0, 255, 136, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 136, 1), 0 0 60px rgba(0, 255, 136, 0.6);
+  }
+}
+
+.slot-wrapper.selected {
+  animation: pulse-glow 1s ease-in-out infinite;
+}

@@ -9,7 +9,9 @@ function ColorCircle({
   onDrop,
   isEmpty = false,
   size = 50,
-  id
+  id,
+  onClick,
+  isSelected = false
 }) {
   const handleDragStart = (e) => {
     if (onDragStart) {
@@ -34,10 +36,17 @@ function ColorCircle({
     }
   };
 
+  const handleClick = (e) => {
+    e.stopPropagation(); // Prevent event bubbling
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
   return (
     <div
       id={id}
-      className={`color-circle ${isEmpty ? 'empty' : ''} ${draggable ? 'draggable' : ''}`}
+      className={`color-circle ${isEmpty ? 'empty' : ''} ${draggable ? 'draggable' : ''} ${isSelected ? 'selected' : ''}`}
       style={{
         backgroundColor: isEmpty ? 'transparent' : color,
         width: `${size}px`,
@@ -48,6 +57,7 @@ function ColorCircle({
       onDragEnd={onDragEnd}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
+      onClick={handleClick}
     >
       {isEmpty && <div className="empty-indicator">+</div>}
     </div>

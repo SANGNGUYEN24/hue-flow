@@ -445,6 +445,13 @@
     gap: 8px;
   }
 
+  /* Reduce color circle size on mobile */
+  .slots-container .color-circle,
+  .color-pool .color-circle {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
   .validation-indicator {
     font-size: 16px;
   }
@@ -535,6 +542,13 @@
     gap: 6px;
   }
 
+  /* Further reduce size on small phones */
+  .slots-container .color-circle,
+  .color-pool .color-circle {
+    width: 35px !important;
+    height: 35px !important;
+  }
+
   .validation-indicator {
     font-size: 14px;
   }
@@ -586,5 +600,12 @@
   .color-pool {
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
+  }
+
+  /* Smallest size for very small screens */
+  .slots-container .color-circle,
+  .color-pool .color-circle {
+    width: 30px !important;
+    height: 30px !important;
   }
 }

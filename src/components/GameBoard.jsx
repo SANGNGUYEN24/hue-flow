@@ -19,6 +19,8 @@ function GameBoard({
 }) {
   const [draggedColor, setDraggedColor] = useState(null);
   const [draggedFromSlot, setDraggedFromSlot] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null); // For click-to-place
+  const [selectedFromSlot, setSelectedFromSlot] = useState(null); // Track if selected from slot
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
@@ -26,6 +28,46 @@ function GameBoard({
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
+  // Click handlers for mobile
+  const handleColorClick = (color) => {
+    if (timeRemaining === 0) return;
+    setSelectedColor(color);
+    setSelectedFromSlot(null);
+  };
+
+  const handleSlotClick = (index) => {
+    if (timeRemaining === 0) return;
+    
+    if (selectedColor !== null) {
+      // Place selected color into slot
+      if (selectedFromSlot !== null) {
+        // Moving from slot to slot
+        onSlotSwap(selectedFromSlot, index);
+      } else {
+        // Placing from pool to slot
+        onColorPlace(selectedColor, index);
+      }
+      setSelectedColor(null);
+      setSelectedFromSlot(null);
+    } else if (slots[index] !== null) {
+      // Select color from slot
+      setSelectedColor(slots[index]);
+      setSelectedFromSlot(index);
+    }
+  };
+
+  const handlePoolClick = () => {
+    if (timeRemaining === 0) return;
+    
+    if (selectedFromSlot !== null) {
+      // Return color from slot to pool
+      onColorRemove(selectedFromSlot);
+      setSelectedColor(null);
+      setSelectedFromSlot(null);
+    }
+  };
+
+  // Drag handlers (keep for desktop)
   const handlePoolDragStart = (color) => {
     if (timeRemaining === 0) return; // Prevent dragging when time is up
     setDraggedColor(color);
@@ -107,7 +149,10 @@ function GameBoard({
         </div>
         <div className="slots-container">
           {slots.map((color, index) => (
-            <div key={`slot-${index}`} className="slot-wrapper">
+            <div 
+              key={`slot-${index}`} 
+              className={`slot-wrapper ${selectedFromSlot === index ? 'selected' : ''}`}
+            >
               <ColorCircle
                 id={`slot-${index}`}
                 color={color}
@@ -117,6 +162,8 @@ function GameBoard({
                 onDragStart={() => handleSlotDragStart(index)}
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={() => handleSlotDrop(index)}
+                onClick={() => handleSlotClick(index)}
+                isSelected={selectedFromSlot === index}
               />
               {isValidating && slotStatus[index] && (
                 <div className={`validation-indicator ${slotStatus[index]}`}>
@@ -150,7 +197,7 @@ function GameBoard({
       </div>
 
       {/* Color pool */}
-      <div className="pool-section">
+      <div className="pool-section" onClick={handlePoolClick}>
         <div className="section-label">Available Colors:</div>
         <div 
           className="color-pool"
@@ -165,6 +212,8 @@ function GameBoard({
               size={50}
               draggable={timeRemaining > 0}
               onDragStart={() => handlePoolDragStart(color)}
+              onClick={() => handleColorClick(color)}
+              isSelected={selectedColor === color && selectedFromSlot === null}
             />
           ))}
         </div>

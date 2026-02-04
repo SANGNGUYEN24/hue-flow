@@ -31,8 +31,18 @@ function GameBoard({
   // Click handlers for mobile
   const handleColorClick = (color) => {
     if (timeRemaining === 0) return;
-    setSelectedColor(color);
-    setSelectedFromSlot(null);
+    
+    // Find the next empty slot
+    const nextEmptySlotIndex = slots.findIndex(slot => slot === null);
+    
+    if (nextEmptySlotIndex !== -1) {
+      // Auto-place color in the next empty slot
+      onColorPlace(color, nextEmptySlotIndex);
+    } else {
+      // If no empty slots, just select the color for manual placement
+      setSelectedColor(color);
+      setSelectedFromSlot(null);
+    }
   };
 
   const handleSlotClick = (index) => {
@@ -129,6 +139,11 @@ function GameBoard({
           <span className="progress-text">{filledCount} / 24 colors placed</span>
           <button onClick={onReset} className="reset-btn">🔄 New Game</button>
         </div>
+      </div>
+
+      {/* Landscape orientation hint for mobile */}
+      <div className="orientation-hint">
+        📱 Tip: Rotate your device to landscape mode for better experience!
       </div>
 
       {/* Arrangement slots */}

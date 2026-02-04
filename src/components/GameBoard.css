@@ -25,6 +25,26 @@
   gap: 20px;
 }
 
+.orientation-hint {
+  display: none;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  .orientation-hint {
+    display: block;
+  }
+}
+
 .timer-display {
   display: flex;
   align-items: center;
@@ -200,10 +220,33 @@
 }
 
 .slots-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-  gap: 15px;
-  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 126, 234, 0.5) rgba(255, 255, 255, 0.05);
+}
+
+.slots-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.slots-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.slots-container::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.5);
+  border-radius: 3px;
+}
+
+.slots-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.7);
 }
 
 .slot-wrapper {
@@ -359,12 +402,33 @@
 }
 
 .color-pool {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-  gap: 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
   padding: 10px;
-  border-radius: 15px;
-  min-height: 150px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 126, 234, 0.5) rgba(255, 255, 255, 0.05);
+}
+
+.color-pool::-webkit-scrollbar {
+  height: 6px;
+}
+
+.color-pool::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.color-pool::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.5);
+  border-radius: 3px;
+}
+
+.color-pool::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.7);
 }
 
 .completion-message {
@@ -440,11 +504,6 @@
 
   .arrow-indicator {
     font-size: 1rem;
-  }
-
-  .slots-container {
-    grid-template-columns: repeat(6, 1fr);
-    gap: 6px;
   }
 
   /* Reduce color circle size on mobile */
@@ -556,16 +615,6 @@
     font-size: 0.9rem;
   }
 
-  .slots-container {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-  }
-
-  .color-pool {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-  }
-
   /* Further reduce size on small phones */
   .slots-container .color-circle,
   .color-pool .color-circle {
@@ -667,16 +716,6 @@
   .color-indicators {
     gap: 6px;
     padding: 4px 8px;
-  }
-
-  .slots-container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-  }
-
-  .color-pool {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
   }
 
   /* Smallest size for very small screens */

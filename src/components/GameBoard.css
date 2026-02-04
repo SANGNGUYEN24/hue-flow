@@ -391,58 +391,60 @@
 
 @media (max-width: 768px) {
   .game-board {
-    padding: 15px;
+    padding: 10px;
   }
 
   .board-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
   }
 
   .timer-display {
-    padding: 8px 15px;
+    padding: 6px 12px;
   }
 
   .timer {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .progress-text {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .reset-btn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    padding: 6px 14px;
+    font-size: 0.85rem;
   }
 
   .section-label {
-    font-size: 0.9rem;
-    margin-bottom: 15px;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
   }
 
   .section-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 10px;
   }
 
   .color-indicators {
     width: 100%;
     justify-content: center;
-    padding: 8px 15px;
+    padding: 6px 12px;
   }
 
   .color-label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .arrow-indicator {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .slots-container {
     grid-template-columns: repeat(6, 1fr);
-    gap: 8px;
+    gap: 6px;
   }
 
   /* Reduce color circle size on mobile */
@@ -453,93 +455,115 @@
   }
 
   .validation-indicator {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .check-btn {
-    padding: 12px 30px;
-    font-size: 1rem;
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    margin-top: 10px;
   }
 
   .validation-result {
-    padding: 15px;
-    font-size: 1rem;
+    padding: 12px;
+    font-size: 0.9rem;
+    margin-top: 10px;
   }
 
   .validation-result strong {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .continue-btn {
-    padding: 10px 25px;
-    font-size: 0.9rem;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    margin-top: 10px;
   }
 
   .time-up-message {
-    padding: 15px;
-    font-size: 1rem;
+    padding: 12px;
+    font-size: 0.9rem;
+    margin-top: 10px;
   }
 
   .color-pool {
     grid-template-columns: repeat(6, 1fr);
-    gap: 8px;
+    gap: 6px;
   }
 
   .game-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: 10px;
+    margin-bottom: 15px;
   }
 
   .progress-info {
     width: 100%;
     justify-content: space-between;
   }
+
+  .slots-section,
+  .pool-section {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .reference-section {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
 }
 
 @media (max-width: 480px) {
   .game-board {
-    padding: 10px;
+    padding: 8px;
   }
 
   .board-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 3px;
   }
 
   .timer {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .timer-display {
+    padding: 5px 10px;
   }
 
   .progress-text {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 
   .reset-btn {
-    padding: 6px 12px;
-    font-size: 0.85rem;
+    padding: 5px 10px;
+    font-size: 0.75rem;
   }
 
   .section-label {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    margin-bottom: 6px;
   }
 
   .color-indicators {
-    gap: 10px;
-    padding: 6px 12px;
+    gap: 8px;
+    padding: 5px 10px;
   }
 
   .arrow-indicator {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .slots-container {
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    gap: 5px;
   }
 
   .color-pool {
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    gap: 5px;
   }
 
   /* Further reduce size on small phones */
@@ -550,56 +574,109 @@
   }
 
   .validation-indicator {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .check-btn {
-    padding: 10px 25px;
-    font-size: 0.9rem;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    margin-top: 8px;
   }
 
   .validation-result {
-    padding: 12px;
-    font-size: 0.9rem;
+    padding: 10px;
+    font-size: 0.85rem;
+    margin-top: 8px;
   }
 
   .validation-result strong {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .continue-btn {
-    padding: 8px 20px;
-    font-size: 0.85rem;
+    padding: 7px 18px;
+    font-size: 0.8rem;
+    margin-top: 8px;
   }
 
   .time-up-message {
-    padding: 12px;
-    font-size: 0.9rem;
+    padding: 10px;
+    font-size: 0.85rem;
+    margin-top: 8px;
   }
 
   .slots-section,
   .pool-section {
-    padding: 15px;
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+
+  .game-header {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .section-header {
+    gap: 6px;
+    margin-bottom: 8px;
   }
 }
 
 @media (max-width: 360px) {
+  .game-board {
+    padding: 5px;
+  }
+
   .board-title {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+    margin-bottom: 2px;
   }
 
   .timer {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .timer-display {
+    padding: 4px 8px;
+  }
+
+  .progress-text {
+    font-size: 0.7rem;
+  }
+
+  .reset-btn {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+  }
+
+  .game-header {
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .section-header {
+    gap: 5px;
+    margin-bottom: 6px;
+  }
+
+  .color-indicators {
+    gap: 6px;
+    padding: 4px 8px;
   }
 
   .slots-container {
     grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
+    gap: 4px;
   }
 
   .color-pool {
     grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
+    gap: 4px;
   }
 
   /* Smallest size for very small screens */
@@ -607,5 +684,43 @@
   .color-pool .color-circle {
     width: 30px !important;
     height: 30px !important;
+  }
+
+  .validation-indicator {
+    font-size: 10px;
+  }
+
+  .check-btn {
+    padding: 7px 16px;
+    font-size: 0.8rem;
+    margin-top: 6px;
+  }
+
+  .validation-result {
+    padding: 8px;
+    font-size: 0.8rem;
+    margin-top: 6px;
+  }
+
+  .validation-result strong {
+    font-size: 0.95rem;
+  }
+
+  .continue-btn {
+    padding: 6px 15px;
+    font-size: 0.75rem;
+    margin-top: 6px;
+  }
+
+  .time-up-message {
+    padding: 8px;
+    font-size: 0.8rem;
+    margin-top: 6px;
+  }
+
+  .slots-section,
+  .pool-section {
+    padding: 8px;
+    margin-bottom: 6px;
   }
 }

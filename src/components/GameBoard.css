@@ -170,6 +170,7 @@
   padding: 25px;
   margin-bottom: 30px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: hidden;
 }
 
 .section-label {
@@ -225,7 +226,8 @@
   gap: 10px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
+  margin-left: 10px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: rgba(102, 126, 234, 0.5) rgba(255, 255, 255, 0.05);
@@ -399,6 +401,7 @@
   padding: 25px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   min-height: 200px;
+  overflow-x: hidden;
 }
 
 .color-pool {
@@ -407,7 +410,8 @@
   gap: 10px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
+  margin-left: 10px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: rgba(102, 126, 234, 0.5) rgba(255, 255, 255, 0.05);
